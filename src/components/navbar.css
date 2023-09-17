@@ -1,0 +1,13 @@
+.navbar{
+    display: flex;
+    max-width: 100%;
+    max-height: 10rem;
+    background-color: #030b06;
+    align-items: flex-start;
+    padding: 1rem;
+}
+.title{
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+}

@@ -1,16 +1,21 @@
-import React from 'react'
-import "./navbar.css"
+import React from 'react';
+import Logo from "../images/torre-nav.png"
+import "./navbar.css";
+import { Link } from 'react-router-dom';
 
 export const NavBar = () => {
   return (
     <>
 
-        <div className='navbar'>
+        <div className='navbar-container'>
+          <Link to={'/'}>
+          
             <div className='title'>
-                <h2>
-                    Search
-                </h2>
-            </div>            
+                  <img src={Logo} alt='torre ai logo' />
+              </div>   
+          
+          </Link>
+                     
         </div>
 
     </>

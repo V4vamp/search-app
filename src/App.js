@@ -6,6 +6,7 @@ import { SearchPage } from './pages/searchPage';
 import { ResultPage } from './pages/resultPage';
 import { LandingPage } from "./pages/landingPage";
 import { NavBar } from './components/navBar';
+import { RecentQueries } from './pages/recentQueries';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
               <Route path="/signals" element={<SignalPage />} />
               <Route path="/profile" element={<GenomeCard />} />
               <Route path='/navbar' element={<NavBar />} />
+              <Route path="/recent-search" element={<RecentQueries />} />
               
             </Routes>
           </Router>

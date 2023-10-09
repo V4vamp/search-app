@@ -18,7 +18,7 @@ export const LandingPage = () => {
         </div>
         <div className='buttons'>
             <div className='search'>
-                <Link to={"/search"}>
+                <Link to={"/search"} style={{ textDecoration: "none" }}>
                     <p>
                         Seach for people
                     </p>
@@ -26,7 +26,7 @@ export const LandingPage = () => {
                 
             </div>
             <div className='signal'>
-                <Link to={"/signals"}>
+                <Link to={"/signals"} style={{ textDecoration: "none" }}>
                     <p>
                         My Signals
                     </p>

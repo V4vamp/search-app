@@ -1,15 +1,32 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import "./genome.css"
 
 export const GenomeCard = ({result}) => {
     const [text, setText] = useState('SIGNAL');
     const [isClicked, setIsClicked] = useState();
+    // const [signaledGenomes, setSignaledGenomes] = useState([]);
+
 
     const toggleContent = () => {
         setText(text === 'SIGNAL' ? 'SIGNALED' : 'SIGNAL');
       };
 
       const handleClick = () => {
+        if (isClicked) {
+            // Remove the person's genome from localStorage
+            const signaledGenomesFromStorage = JSON.parse(localStorage.getItem('signaledGenomes')) || [];
+            const updatedSignaledGenomes = signaledGenomesFromStorage.filter(
+              (genome) => genome.ggId !== result.ggId
+            );
+            localStorage.setItem('signaledGenomes', JSON.stringify(updatedSignaledGenomes));
+          } else {
+            // Add the person's genome to localStorage
+            const signaledGenomesFromStorage = JSON.parse(localStorage.getItem('signaledGenomes')) || [];
+            const updatedSignaledGenomes = [...signaledGenomesFromStorage, result];
+            localStorage.setItem('signaledGenomes', JSON.stringify(updatedSignaledGenomes));
+          }        
+
         setIsClicked(!isClicked);
       };
 
@@ -27,7 +44,10 @@ export const GenomeCard = ({result}) => {
                     <p>{result.name}</p>
                     
                         <p className='genome'>
+                            <Link to={`https://torre.ai/${result.username}`} style={{ textDecoration: "none" }}>
                             VIEW {result.name.split(' ')[0]}'S GENOME
+                            </Link>
+                            
                         </p>
                         <p className='signal'
                             onClick={()=>{

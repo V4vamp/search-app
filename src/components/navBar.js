@@ -7,14 +7,23 @@ export const NavBar = () => {
   return (
     <>
 
-        <div className='navbar-container'>
-          <Link to={'/'}>
-          
+        <div className='navbar-container'>          
             <div className='title'>
+              <Link to={"/"}>
                   <img src={Logo} alt='torre ai logo' />
-              </div>   
-          
-          </Link>
+              </Link>
+            </div>   
+          <div className='nav-tabs'>
+            <Link to='/search' className='nav-tab'>
+              Search
+            </Link>
+            <Link to='/signals' className='nav-tab'>
+              Signals
+            </Link>
+            <Link to='/recent-search' className='nav-tab'>
+              Recent Searches
+            </Link>
+      </div>
                      
         </div>
 

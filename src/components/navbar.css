@@ -6,11 +6,25 @@
     align-items: flex-start;
     padding: 1rem;
 }
-.title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.title {
     height: 5rem;
     cursor: pointer;
 }
+.nav-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+  }
+  
+  .nav-tab {
+    text-decoration: none;
+    color: #f0f0f0;
+    padding: 10px 20px;
+    margin-right: 10px;
+  }
+  
+  .nav-tab:hover {
+    color: #333;
+  }
 

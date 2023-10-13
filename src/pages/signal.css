@@ -1,12 +1,27 @@
 .signal-container{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     width: 100%;
-    justify-content: flex-end;
-    margin-top: 5rem;
+    height: 100vh;
+    margin-top: 1rem;
+    padding: 1rem;
 }
+.no-signals-container {
+    text-align: center; /* Center the content horizontally */
+    margin-top: 20px; /* Add some spacing between the message and NavBar */
+  }
+  
+  .no-signals-message {
+    font-size: 2rem;
+    color: #fff;
+  }
 
-.signalled-profiles{
-    width: 25%;
-    box-sizing: border-box;
+ul{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1rem;
+}
+.signaled-card{
+    width: 50%;
+    margin-left: 5rem
 }

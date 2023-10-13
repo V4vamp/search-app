@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "./genome.css"
 
@@ -8,27 +8,45 @@ export const GenomeCard = ({result}) => {
     // const [signaledGenomes, setSignaledGenomes] = useState([]);
 
 
-    const toggleContent = () => {
-        setText(text === 'SIGNAL' ? 'SIGNALED' : 'SIGNAL');
-      };
+     useEffect(() => {
+       const signaledGenomesFromStorage =
+         JSON.parse(localStorage.getItem("signaledGenomes")) || [];
+       const isProfileSignaled = signaledGenomesFromStorage.some(
+         (genome) => genome.ggId === result.ggId
+       );
 
-      const handleClick = () => {
-        if (isClicked) {
-            // Remove the person's genome from localStorage
-            const signaledGenomesFromStorage = JSON.parse(localStorage.getItem('signaledGenomes')) || [];
-            const updatedSignaledGenomes = signaledGenomesFromStorage.filter(
-              (genome) => genome.ggId !== result.ggId
-            );
-            localStorage.setItem('signaledGenomes', JSON.stringify(updatedSignaledGenomes));
-          } else {
-            // Add the person's genome to localStorage
-            const signaledGenomesFromStorage = JSON.parse(localStorage.getItem('signaledGenomes')) || [];
-            const updatedSignaledGenomes = [...signaledGenomesFromStorage, result];
-            localStorage.setItem('signaledGenomes', JSON.stringify(updatedSignaledGenomes));
-          }        
+       // Set the initial text based on whether the profile is in signaled genomes
+       setText(isProfileSignaled ? "SIGNALED" : "SIGNAL");
+       setIsClicked(isProfileSignaled);
+     }, [result.ggId]);
 
-        setIsClicked(!isClicked);
-      };
+     const handleClick = () => {
+       if (isClicked) {
+         // Remove the person's genome from localStorage
+         const signaledGenomesFromStorage =
+           JSON.parse(localStorage.getItem("signaledGenomes")) || [];
+         const updatedSignaledGenomes = signaledGenomesFromStorage.filter(
+           (genome) => genome.ggId !== result.ggId
+         );
+         localStorage.setItem(
+           "signaledGenomes",
+           JSON.stringify(updatedSignaledGenomes)
+         );
+         setText("SIGNAL"); // Set text to 'SIGNAL' when un-signaling
+       } else {
+         // Add the person's genome to localStorage
+         const signaledGenomesFromStorage =
+           JSON.parse(localStorage.getItem("signaledGenomes")) || [];
+         const updatedSignaledGenomes = [...signaledGenomesFromStorage, result];
+         localStorage.setItem(
+           "signaledGenomes",
+           JSON.stringify(updatedSignaledGenomes)
+         );
+         setText("SIGNALED"); // Set text to 'SIGNALED' when signaling
+       }
+
+       setIsClicked(!isClicked);
+     };
 
   return (
     <>
@@ -44,14 +62,13 @@ export const GenomeCard = ({result}) => {
                     <p>{result.name}</p>
                     
                         <p className='genome'>
-                            <Link to={`https://torre.ai/${result.username}`} style={{ textDecoration: "none" }}>
+                            <Link to={`https://torre.ai/${result.username}`} style={{ textDecoration: "none", color: "#021212" }}>
                             VIEW {result.name.split(' ')[0]}'S GENOME
                             </Link>
                             
                         </p>
                         <p className='signal'
                             onClick={()=>{
-                            toggleContent();
                             handleClick();
                             }}
                             style={{

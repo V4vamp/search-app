@@ -23,8 +23,13 @@ export const SignalPage = () => {
     localStorage.setItem('signaledGenomes', JSON.stringify(updatedLocalStorage));
   };
 
-    if (!signaledGenomes || signaledGenomes.length === 0) {
-    return <p>No signaled genomes to display.</p>;
+  if (!signaledGenomes || signaledGenomes.length === 0) {
+    return (
+      <div className="no-signals-container">
+        <NavBar />
+        <p className="no-signals-message">No signaled genomes to display.</p>
+      </div>
+    );
   }
   
 
@@ -32,17 +37,21 @@ export const SignalPage = () => {
     
     <>
         <NavBar />
-        <div>
-          <h2>Signaled Genomes</h2>
+        <div className='signal-container'>
+          <h2>Signals</h2>
           <div className="signaled-genomes">
+            <ul>
             {signaledGenomes.map((result, index) => (
+              <div className='signaled-card'>
             <GenomeCard 
             key={index} 
             result={result}
             isClicked={true} 
             handleClick={handleRemoveGenome}
             />
+            </div>
             ))}
+            </ul>
           </div>
         </div>
 

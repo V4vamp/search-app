@@ -3,7 +3,10 @@ body {
   font-family: 'Mooli', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #666;
+  background-image: url(../src/images/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 code {

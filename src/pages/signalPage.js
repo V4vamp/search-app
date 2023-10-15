@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { NavBar } from '../components/navBar'
-import "./signal.css"
-import { GenomeCard } from '../components/genomeCard'
+import React, { useState, useEffect } from 'react';
+import { NavBar } from '../components/navBar';
+import "./signal.css";
+import { GenomeCard } from '../components/genomeCard';
+import { Helmet } from 'react-helmet';
 
 export const SignalPage = () => {
   const [signaledGenomes, setSignaledGenomes] = useState([]);
@@ -27,15 +28,22 @@ export const SignalPage = () => {
     return (
       <div className="no-signals-container">
         <NavBar />
-        <p className="no-signals-message">No signaled genomes to display.</p>
+        <p className="no-signals-message">No signaled profiles to display.</p>
       </div>
     );
   }
+
+  const pageTitle = "torre || Signals"
   
 
   return (
     
     <>
+
+      <Helmet>
+        <title>{pageTitle}</title>
+      </Helmet>
+      
         <NavBar />
         <div className='signal-container'>
           <h2>Signals</h2>

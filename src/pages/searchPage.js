@@ -3,6 +3,7 @@ import { NavBar } from '../components/navBar';
 import Icon from "../images/Search.png";
 import "./search.css";
 import { GenomeCard } from '../components/genomeCard';
+import { Helmet } from 'react-helmet';
 
 export const SearchPage = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -63,8 +64,14 @@ export const SearchPage = () => {
         }
       };
 
+      const pageTitle = "torre || Search"
+
     return (
       <>
+
+      <Helmet>
+        <title>{pageTitle}</title>
+      </Helmet>
             <NavBar />
             <div className='container'>
                 <div className='search-box'>

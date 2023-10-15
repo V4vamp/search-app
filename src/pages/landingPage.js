@@ -2,10 +2,18 @@ import React from 'react'
 import { NavBar } from '../components/navBar'
 import "./land.css"
 import { Link } from 'react-router-dom'
+import { Helmet } from "react-helmet";
 
 export const LandingPage = () => {
+
+    const pageTitle = "torre AI";
+
+
   return (
     <>
+      <Helmet>
+        <title>{pageTitle}</title>
+      </Helmet>
     
     <div className='landingpage-container'>
         <div className='land-navbar'>
